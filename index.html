@@ -172,7 +172,8 @@
               </ul><strong class="pull-right">TOTAL: £ {{ total_basket() }}</strong>
             </div>
             <hr>
-            <form role="form" name="order_form">
+            <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order              </button>
+            <form ng-show="user" role="form" name="order_form">
               <div class="form-group">
                 <label for="delivery_address" class="control-label">Delivery address</label>
                 <input id="delivery_address" type="text" required ng-model="delivery_address" class="form-control"><span ng-show="order_form.delivery_address.$error.required" class="error">address is required!</span>
