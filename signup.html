@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cabmini">
+  <head>
+    <!-- Meta Tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>FlexLand</title>
+    <!-- End Meta Tags-->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--><!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+    <!-- Google Font-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
+    <!-- End Google Font-->
+    <!-- Styesheets-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="css/ng-boilerplate-0.3.1.css">
+    <!-- End Stylesheets-->
+    <style>
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none;
+      }
+      
+    </style>
+  </head>
+  <body ng-controller="AppCtrl">
+    <!-- Start Header-->
+    <header id="header">
+      <!-- Start Navigation-->
+      <nav role="navigation" class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <!-- Start Logo / Text--><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;cab</span>mini</a>
+            <!-- End Logo / Text-->
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#quote">Live Quote</a></li>
+              <li><a href="#description">Description</a></li>
+              <li><a href="#testimonials">Contact us</a></li>
+              <li><a href="#features-listing">advertise with us</a></li>
+            </ul>
+          </div>
+        </div><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;cab</span>mini</a>
+      </nav>
+    </header>
+    <div id="form">
+      <div class="container">
+        <div class="row section">
+          <div class="col-md-6 col-sm-12 header-text">
+            <h1>Let your clients see instant, precise prices</h1>
+            <p>
+              Did you know, most of the clients prefer to pay higher price straightaway
+              rather than to receive cheap quote just to later findout they need to pay more.
+            </p>
+            <p>We provide your prices to be delivered in very elegant form.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12 v-center text-center">
+            <form class="header-optin-content">
+              <div class="form-group">
+                <select class="form-control input-lg selectpickerX optin-input">
+                  <option>choose number of passangers ...</option>
+                  <option>4 persons</option>
+                  <option>5 persons</option>
+                  <option>6 persons</option>
+                  <option>7 persons</option>
+                  <option>8 persons</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="origin" class="sr-only">From</label>
+                <input id="origin" type="text" autocomplete="MyMap" ng-model="via.point" placeholder="From..." class="form-control input-lg optin-input">
+              </div>
+              <div class="form-group">
+                <label for="destination" class="sr-only">To</label>
+                <input id="destination" type="text" placeholder="To..." class="form-control input-lg optin-input">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-submit">Send     </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Start Footer-->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <p>Copyright © 2013 &nbsp;<a href="http://www.simplesphere.net" title="FlexLand"> </a><strong>Cab</strong>Mini &nbsp;            </p>
+          </div>
+          <div class="col-md-7">
+            <ul class="hidden-xs footer-links pull-right">
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- compiled JS-->
+    <script type="text/javascript" src="vendor/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="vendor/jquery/jquery.js">   </script>
+    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js">   </script>
+    <script type="text/javascript" src="vendor/bootstrap-select/bootstrap-select.js">   </script>
+    <script type="text/javascript" src="vendor/angular/angular.js">   </script>
+    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-debug.js">   </script>
+    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-simple-login.js">   </script>
+    <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.js">   </script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js">   </script>
+    <script type="text/javascript" src="vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js">   </script>
+    <script type="text/javascript" src="vendor/angular-ui-utils/modules/mask/mask.js">   </script>
+    <script type="text/javascript" src="js/src/app/GoogleMaps.js">   </script>
+    <script type="text/javascript" src="js/src/app/GoogleMapsPlaces.js">   </script>
+    <script type="text/javascript" src="js/src/app/about/about.js">   </script>
+    <script type="text/javascript" src="js/src/app/app.js">   </script>
+    <script type="text/javascript" src="js/src/app/controllers/map.js">   </script>
+    <script type="text/javascript" src="js/src/app/home/home.js">   </script>
+    <script type="text/javascript" src="js/src/common/plusOne/plusOne.js">   </script>
+    <script type="text/javascript" src="templates-common.js">   </script>
+    <script type="text/javascript" src="templates-app.js"></script>
+    <!-- Google Analytics:-->
+  </body>
+</html>

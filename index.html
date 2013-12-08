@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cabmini">
+  <head>
+    <!-- Meta Tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>FlexLand</title>
+    <!-- End Meta Tags-->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--><!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+    <!-- Google Font-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
+    <!-- End Google Font-->
+    <!-- Styesheets-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="css/ng-boilerplate-0.3.1.css">
+    <!-- End Stylesheets-->
+    <style>
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none;
+      }
+      
+    </style>
+  </head>
+  <body ng-controller="AppCtrl">
+    <div id="order_sent" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <form role="form" class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+            <h4 id="login_label" class="modal-title">Your order has been sent. Thank you.</h4>
+          </div>
+          <div class="modal-body">
+            We are always happy to answer any questions you may have.
+            Please write to us on Bla@contact.computer
+            or give us a call 0777777777
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <form role="form" class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+            <h4 id="login_label" class="modal-title">Login</h4>
+          </div>
+          <div class="modal-body">
+            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address {{email}}</label>
+              <input id="exampleInputEmail1" type="email" placeholder="Enter email" ng-model="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input id="exampleInputPassword1" type="password" placeholder="Password" ng-model="password" class="form-control">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox">Remember me on this computer
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            <button ng-click="login()" type="button" class="btn btn-primary">Submit     </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="signup" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <form role="form" class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+            <h4 id="login_label" class="modal-title">Signup          </h4>
+          </div>
+          <div class="modal-body">
+            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address {{email}}</label>
+              <input id="exampleInputEmail1" type="email" placeholder="Enter email" ng-model="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input id="exampleInputPassword1" type="password" placeholder="Password" ng-model="password" class="form-control">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox">Remember me on this computer
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            <button ng-click="signup()" type="button" class="btn btn-primary">Submit     </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="top-part">
+      <!-- Start Header-->
+      <header id="header">
+        <!-- Start Navigation-->
+        <nav role="navigation" class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+              <!-- Start Logo / Text--><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;AyoFoods</span></a>
+              <!-- End Logo / Text-->
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#quote">Live Quote</a></li>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#testimonials">Contact us</a></li>
+                <li><a href="#features-listing">Features</a></li>
+              </ul>
+              <form role="search" class="navbar-form navbar-left">     
+                <button ng-hide="user" type="button" data-toggle="modal" data-target="#signup" class="btn btn-primary">SIGN UP  </button>
+                <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">LOGIN</button>
+                <button ng-show="user" type="button" ng-click="logout()" class="btn btn-primary">LOGOUT</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container">
+        <div class="row section">
+          <div class="col-lg-12">
+            <ul class="nav nav-pills">
+              <li ng-class="{&quot;active&quot;: active == &quot;meat&quot;}" ng-click="active = &quot;meat&quot;"><a href="#">Fish and Meat Prices</a></li>
+              <li ng-class="{&quot;active&quot;: active == &quot;grain&quot;}" ng-click="active = &quot;grain&quot;"><a href="#">Flour &amp; Grain Prices</a></li>
+              <li ng-class="{&quot;active&quot;: active == &quot;drinks&quot;}" ng-click="active = &quot;drinks&quot;"><a href="#">Canned Drinks</a></li>
+              <li ng-class="{&quot;active&quot;: active == &quot;vegetables&quot;}" ng-click="active = &quot;vegetables&quot;"><a href="#">Vegetables</a></li>
+              <li ng-class="{&quot;active&quot;: active == &quot;cupboard&quot;}" ng-click="active = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits  </a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <div class="row section"> 
+          <div class="col-lg-12">
+            <form role="form">
+              <div class="form-group">
+                <label for="search">Search the product you want to add</label>
+                <input id="search" ng-model="search" placeholder="e.g. Ox Tail" class="form-control">
+              </div>
+            </form>
+            <hr>
+            <ul class="list-group">
+              <li ng-repeat="item in items | filter:search" class="clearfix list-group-item">
+                <form role="form" class="form-inline">
+                  <div style="width: 200px;" class="input-group pull-right"><span class="input-group-addon"><i class="fa fa-lg fa-fw fa-shopping-cart pull-right"></i></span>
+                    <input type="number" min="0" value="0" ng-model="basket[item.id]" style="width: 200px;" class="form-control"><span ng-click="incX(item.id)" class="input-group-addon"><i class="fa fa-plus-circle"></i></span><span class="input-group-addon"><i ng-click="decX(item.id)" class="fa fa-minus-circle"></i></span>
+                  </div>
+                </form>
+                <div class="pull-left"><img src="{{item.flickr}}" height="50">{{item.id}} {{item.desc}}  price: £{{item.price}} per  {{item.unit_kg}}            </div>
+              </li>
+            </ul>
+            <div class="headline">
+              <h5>Your basket contains: </h5>
+              <hr>
+              <ul class="list-group">
+                <li ng-repeat="(id, qty) in basket | filter:search" class="clearfix list-group-item">{{items[id].desc}}<span class="pull-right">{{qty}} x {{items[id].unit_kg}} = £ {{format_money_a(qty, items[id].price)}}</span></li>
+              </ul><strong class="pull-right">TOTAL: £ {{ total_basket() }}</strong>
+            </div>
+            <hr>
+            <form role="form" name="order_form">
+              <div class="form-group">
+                <label for="delivery_address" class="control-label">Delivery address</label>
+                <input id="delivery_address" type="text" required ng-model="delivery_address" class="form-control"><span ng-show="order_form.delivery_address.$error.required" class="error">address is required!</span>
+              </div>
+              <div class="form-group">
+                <label for="delivery_postcode" class="control-label">Delivery postcode</label>
+                <input id="delivery_postcode" type="text" required ng-model="delivery_postcode" class="form-control"><span ng-show="order_form.delivery_postcode.$error.required" class="error">postcode is required!</span>
+              </div>
+              <div class="form-group">
+                <label for="telephone" ng-model="telephone" class="control-label">Telephone contact</label>
+                <input id="telephone" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <select id="delivery_date" required ng-model="delivery_date" class="form-control">
+                  <option>Choose delivery date</option>
+                  <option value="12-12-2013">12-12-2013</option>
+                  <option value="13-12-2013">13-12-2013</option>
+                  <option value="14-12-2013">14-12-2013</option>
+                  <option value="15-12-2013">15-12-2013</option>
+                </select><span ng-show="order_form.delivery_date.$error.required" class="error">delivery date is required!  </span>
+              </div>
+              <button id="placeorder" type="submit" placeholder="e.g. Ox Tail" ng-click="place_order()" class="btn-lg btn-success">Place your order</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- compiled JS-->
+    <script type="text/javascript" src="vendor/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="vendor/jquery/jquery.js">   </script>
+    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js">   </script>
+    <script type="text/javascript" src="vendor/bootstrap-select/bootstrap-select.js">   </script>
+    <script type="text/javascript" src="vendor/angular/angular.js">   </script>
+    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-debug.js">   </script>
+    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-simple-login.js">   </script>
+    <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.js">   </script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js">   </script>
+    <script type="text/javascript" src="vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js">   </script>
+    <script type="text/javascript" src="vendor/angular-ui-utils/modules/mask/mask.js">   </script>
+    <script type="text/javascript" src="js/src/app/GoogleMaps.js">   </script>
+    <script type="text/javascript" src="js/src/app/GoogleMapsPlaces.js">   </script>
+    <script type="text/javascript" src="js/src/app/about/about.js">   </script>
+    <script type="text/javascript" src="js/src/app/app.js">   </script>
+    <script type="text/javascript" src="js/src/app/controllers/map.js">   </script>
+    <script type="text/javascript" src="js/src/app/home/home.js">   </script>
+    <script type="text/javascript" src="js/src/common/plusOne/plusOne.js">   </script>
+    <script type="text/javascript" src="templates-common.js">   </script>
+    <script type="text/javascript" src="templates-app.js"></script>
+    <!-- Google Analytics:-->
+  </body>
+</html>

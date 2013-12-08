@@ -1,0 +1,14 @@
+{
+  "inventory" : {
+  	"1": {"id": 1, "name": "Beef on The Bone", "weight":  "11111kg", "pack": 2, "per_kilo": 4.99, "per_pack": 9.99},
+    "2": {"id": 2, "name": "Boneless Beef", "weight": "1kg", "pack": 2, "per_kilo": 4.99, "per_pack": 9.99},
+    "3": {"id": 3, "name": "Ox Tail", "weight": "1kg", "pack": 1, "per_kilo": 6.5, "per_pack":  6.5},
+    "4": {"id": 4, "name": "Ox Tail", "weight": "2kg",            "per_kilo":     5.99, "per_pack": 11.99},
+    "5": {"id": 5, "name": "Pluvera Leg & Thigh", "weight": "10kg","per_kilo":   2.1, "per_pack": 21},
+    "6": {"id": 6, "name": "Pluvera Leg & Thigh", "weight": "5kg", "per_kilo":    10.99 , "per_pack":10.99},
+    "7": {"id": 7, "name": "Pluvera Leg & Thigh", "weight": "2kg", "per_kilo":    4.99, "per_pack": 4.99},
+    "8": {"id": 8, "name": "Pluvera Leg & Thigh", "weight": "1kg", "per_kilo":    2.4, "per_pack": 2.49},
+    "9": {"id": 9, "name": "Pluvera Whole Chicken", "weight": "1kg","pack": 1, "per_kilo": 2.1, "per_pack":  2.1},
+    "10": {"id": 10, "name": "Smoked hen/Chicken", "weight":  "1kg", "pack": 2, "per_kilo": 3.99, "per_pack": 7.99}    
+  }
+}
