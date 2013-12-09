@@ -19,14 +19,17 @@ angular.module( 'cabmini', [
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $http, angularFire, angularFireAuth, $location /*, GoogleMapsApi */) {
+.controller( 'AppCtrl', function AppCtrl ( $scope, $http, angularFire, angularFireAuth, angularFireCollection, $location /*, GoogleMapsApi */) {
 
-  $scope.inventory = [];
   $scope.basket = {};
 
   var ref = new Firebase("https://ayofoods.firebaseio.com/");
   angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
 
+
+  var bla = angularFireCollection(new Firebase("https://ayofoods.firebaseio.com/inventory"), function(a, b, c){
+    console.log(a,b, c);
+  });
   var inventory = new Firebase("https://ayofoods.firebaseio.com/inventory");
   angularFire(inventory, $scope, 'items');  
 
@@ -51,7 +54,7 @@ angular.module( 'cabmini', [
     ref = ref.child($scope.user.id).child('orders');
     var order = ref.push();
     $scope.basket.date = Date();
-    order.set($scope.basket);   
+    order.set(angular.copy($scope.basket));   
     $scope.basket = {};
 
     $('#order_sent').modal('show');
@@ -91,8 +94,8 @@ angular.module( 'cabmini', [
   };
 
   $scope.total_basket = function(){
-    return $scope.format_money(_.reduce($scope.basket, function(acc, qty, i){
-      return acc + qty * $scope.items[i].price * 100;
+    return $scope.format_money(_.reduce($scope.basket, function(acc, item){
+      return acc + item.qty * item.price * 100;
     }, 0));
   };
 
@@ -104,16 +107,22 @@ angular.module( 'cabmini', [
   });
 
 
-  $scope.incX = function(id) {
+  $scope.incX = function(item) {
     $scope.basket = $scope.basket || {};
-    $scope.basket[id] = $scope.basket[id] || 0;
-    $scope.basket[id] = $scope.basket[id] + 1;
+    $scope.basket[item.id] = $scope.basket[item.id] || {};
+    var qty = $scope.basket[item.id].qty || 0;
+    $scope.basket[item.id] = item;
+    $scope.basket[item.id].qty = qty + 1;
   };
 
   $scope.decX = function(id) {
     $scope.basket = $scope.basket || {};
-    $scope.basket[id] = $scope.basket[id] || 0;
-    $scope.basket[id] = $scope.basket[id] - 1;
+    $scope.basket[item.id] = $scope.basket[item.id] || {};
+    var qty = $scope.basket[item.id].qty || 0;
+    $scope.basket[item.id] = item;
+    if($scope.basket[item.id].qty > 0){
+      $scope.basket[item.id].qty = qty - 1;
+    }
   };
 
   // GoogleMapsApi.then(
@@ -188,4 +197,20 @@ angular.module( 'cabmini', [
 });
 
 $('.selectpicker').selectpicker();
+
+
+jQuery('.tooltip').on('mouseover', function(){
+    // may need to check here if it already has a tooltip (depending on plugin)
+  //   jQuery(this).tooltip({ 
+  //      effect: 'slide',
+  //      offset: [10, 570],
+  //      predelay: 100, 
+  //      position: "bottom left"}).dynamic( { 
+  //          bottom: { 
+  //          direction: 'down', 
+  //          bounce: true 
+  //      } 
+  // }); 
+  console.log("tooltip");
+});
 
