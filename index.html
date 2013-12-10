@@ -16,6 +16,7 @@
     <!-- End Google Font-->
     <!-- Styesheets-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="vendor/DataTables/media/css/jquery.DataTables.css">
     <link rel="stylesheet" type="text/css" href="css/ng-boilerplate-0.3.1.css">
     <!-- End Stylesheets-->
     <style>
@@ -185,26 +186,7 @@
         </div>
         <div class="row section">
           <div class="col-lg-8">
-            <form role="form">
-              <div class="form-group">
-                <label for="search">Search the product you want to add</label>
-                <input id="search" ng-model="search" placeholder="e.g. Ox Tail" class="form-control">
-              </div>
-            </form>
-            <hr>
-            <table datatable="overrideOptions" aaSorting="aaSorting" ao-columns="tblColumns" aa-data="table_items" class="table table-bordered table-condensed table-striped table-hover"> </table>
-            <ul class="list-group">
-              <li ng-repeat="item in items | filter:search" class="clearfix list-group-item">
-                <form role="form" class="form-inline">
-                  <div class="input-group pull-right"><span ng-show="basket[item.id].qty &gt; 0">
-                       
-                      You have <strong>{{basket[item.id].qty}} </strong>in your basket &nbsp;</span><span ng-hide="basket[item.id].qty &gt; 0">Add to your basket &nbsp;</span><a ng-click="incX(item)" class="btn btn-primary">                 <i class="fa fa-plus-circle">&nbsp;</i></a><a ng-click="decX(item)" class="btn btn-primary"><i class="fa fa-minus-circle">&nbsp;</i></a></div>
-                </form>
-                <div class="pull-left tt"><img src="{{item.flickr}}" height="50">
-                  <caption>{{item.desc}}  price: £{{item.price}} per  {{item.unit_kg}}            </caption>
-                </div>
-              </li>
-            </ul>
+            <table datatable="overrideOptions" aaSorting="aaSorting" ao-columns="tblColumns" aa-data="items" class="table table-bordered table-condensed table-striped table-hover"> </table>
           </div>
           <div class="row section">
             <div class="col-lg-4">
@@ -235,7 +217,10 @@
     <script type="text/javascript" src="js/angularfire-0.3.0.js">   </script>
     <!--script(type="text/javascript", src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.js") -->
     <script type="text/javascript" src="vendor/angular-ui-utils/modules/mask/mask.js">   </script>
+    <script type="text/javascript" src="vendor/DataTables/media/js/jquery.DataTables.js">   </script>
+    <script type="text/javascript" src="js/datatables-bootstrap-paging.js"></script>
     <script type="text/javascript" src="js/src/app/app.js">   </script>
+    <script type="text/javascript" src="js/src/app/directives/dataTable.js"> </script>
     <!-- Google Analytics:-->
   </body>
 </html>
