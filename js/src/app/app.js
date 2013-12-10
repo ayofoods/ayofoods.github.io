@@ -19,17 +19,13 @@ angular.module( 'cabmini', [
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $http, angularFire, angularFireAuth, angularFireCollection, $location /*, GoogleMapsApi */) {
+.controller( 'AppCtrl', function AppCtrl ( $scope, $http, angularFire, angularFireAuth, angularFireCollection, $location) {
 
   $scope.basket = {};
 
   var ref = new Firebase("https://ayofoods.firebaseio.com/");
   angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
 
-
-  var bla = angularFireCollection(new Firebase("https://ayofoods.firebaseio.com/inventory"), function(a, b, c){
-    console.log(a,b, c);
-  });
   var inventory = new Firebase("https://ayofoods.firebaseio.com/inventory");
   angularFire(inventory, $scope, 'items');  
 
