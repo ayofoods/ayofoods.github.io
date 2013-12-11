@@ -24,6 +24,12 @@ angular.module( 'cabmini', [
 
   $scope.basket = {};
 
+  var money = function(amount){
+    return (""+amount).replace(/(.*)(.{2})/g, "$1.$2");
+  };
+
+  $scope.money = money;
+
   var ref = new Firebase("https://ayofoods.firebaseio.com/");
   angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
 
@@ -100,19 +106,10 @@ angular.module( 'cabmini', [
     angularFireAuth.createUser($scope.email, $scope.password);
   };
 
-
-  $scope.format_money = function(money){
-    return ("" + money).replace(/(.*)(.{2})/g, "$1.$2");
-  };
-
-  $scope.format_money_a = function(qty, price){
-    return $scope.format_money(100 * price * qty);
-  };
-
   $scope.total_basket = function(){
-    return $scope.format_money(_.reduce($scope.basket, function(acc, item){
-      return acc + item.qty * item.price * 100;
-    }, 0));
+    return _.reduce($scope.basket, function(acc, item){
+      return acc + item.qty * (100 * item.price);
+    }, 0);
   };
 
 
@@ -140,6 +137,9 @@ angular.module( 'cabmini', [
     $scope.basket[item.id] = item;
     if($scope.basket[item.id].qty > 0){
       $scope.basket[item.id].qty = qty - 1;
+    }
+    if($scope.basket[item.id].qty<=0){
+      delete $scope.basket[item.id];
     }
   };
 
@@ -185,7 +185,7 @@ angular.module( 'cabmini', [
         return source;
       },
       mRender: function (item) {
-        return '£ '+item.price || '';
+        return '£ '+money(100*item.price) || '';
       }
 
     },

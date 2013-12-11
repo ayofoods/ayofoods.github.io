@@ -189,16 +189,19 @@
           </div>
           <div class="row section">
             <div class="col-lg-4">
+              <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
+              <button ng-show="user" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
+              <hr><strong class="pull-right">TOTAL: £ 6.50 (delivery) + £ {{ money(total_basket()) }} = £ {{ money(650+total_basket()) }}</strong>
+              <hr>
               <div class="headline">
                 <label>Your basket contains: </label>
                 <ul class="list-group">
-                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><span class="pull-right">{{item.qty}} x £ {{item.price}} = £ {{format_money_a(item.qty, item.price)}}</span></li>
+                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><span class="pull-right">{{item.qty}} x £ {{money(100*item.price)}} = £ {{money(item.qty * (100 * item.price))}}</span></li>
                 </ul>
-                <hr><strong class="pull-right">TOTAL: £ {{ total_basket() }}</strong>
                 <hr>
               </div>
-              <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
-              <button id="placeorder" ng-show="user" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
+              <!--button.btn.btn-primary(ng-hide="user", type="button", data-toggle="modal", data-target="#login") Please login to make an order                -->
+              <!--button.btn.btn-success(ng-show="user", type="submit", data-toggle="modal", data-target="#place_order") Checkout-->
             </div>
           </div>
         </div>
