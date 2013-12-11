@@ -28,6 +28,7 @@ angular.module( 'cabmini', [
   angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
 
   angularFireCollection(new Firebase("https://ayofoods.firebaseio.com/inventory"), function(data){
+    //$scope.all_items = _.filter(data.val(), function(i){ return i.price; });
     $scope.all_items = data.val();
 
     $scope.categories = _.reduce($scope.all_items, function(acc, i){
@@ -165,6 +166,17 @@ angular.module( 'cabmini', [
       mRender: function (item) {
         return item.desc || '';
       }
+    },    
+    {
+      sTitle: "Weight",
+      //mData: ".",
+      mData: function (source, type, val) {
+        return source;
+      },
+      mRender: function (item) {
+        return item.unit_kg || '';
+      }
+
     },
     {
       sTitle: "Price",
@@ -173,18 +185,7 @@ angular.module( 'cabmini', [
         return source;
       },
       mRender: function (item) {
-        return item.price || '';
-      }
-
-    },
-    {
-      sTitle: "Amount",
-      //mData: ".",
-      mData: function (source, type, val) {
-        return source;
-      },
-      mRender: function (item) {
-        return item.unit_kg || '';
+        return '£ '+item.price || '';
       }
 
     },

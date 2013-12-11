@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>FlexLand</title>
+    <title>Welcome to IjeShop - the home of great Nigerian food</title>
     <!-- End Meta Tags-->
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--><!--[if IE 7]>
@@ -151,16 +151,13 @@
           <div class="container">
             <div class="navbar-header">
               <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-              <!-- Start Logo / Text--><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;AyoFoods</span></a>
+              <!-- Start Logo / Text--><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;IjeShop</span></a>
               <!-- End Logo / Text-->
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#quote">Live Quote</a></li>
-                <li><a href="#description">Description</a></li>
-                <li><a href="#testimonials">Contact us</a></li>
-                <li><a href="#features-listing">Features</a></li>
+                <li class="active"><a href="#">Inventory</a></li>
+                <li><a href="#about">About Us</a></li>
               </ul>
               <form role="search" class="navbar-form navbar-left">     
                 <button ng-hide="user" type="button" data-toggle="modal" data-target="#signup" class="btn btn-primary">SIGN UP  </button>
@@ -175,12 +172,13 @@
         <div class="row section">
           <div class="col-lg-8">
             <ul class="nav nav-pills">
-              <li ng-class="{&quot;active&quot;: category == &quot;meat&quot;}" ng-click="category = &quot;meat&quot;"><a href="#">Fish and Meat Prices</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;grain&quot;}" ng-click="category = &quot;grain&quot;"><a href="#">Flour &amp; Grain Prices</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;drinks&quot;}" ng-click="category = &quot;drinks&quot;"><a href="#">Canned Drinks</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;vegetables&quot;}" ng-click="category = &quot;vegetables&quot;"><a href="#">Vegetables</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;cupboard&quot;}" ng-click="category = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits  </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;xmas&quot;}" ng-click="category = &quot;xmas&quot;"><a href="#">Xmas   </a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;meat&quot;}" ng-click="category = &quot;meat&quot;"><a href="#">Fish and Meat</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;grain&quot;}" ng-click="category = &quot;grain&quot;"><a href="#">Flour &amp; Grain </a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;drinks&quot;}" ng-click="category = &quot;drinks&quot;"><a href="#">Drinks</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;vegetables&quot;}" ng-click="category = &quot;vegetables&quot;"><a href="#">Fruits &amp; Vegetables</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;cupboard&quot;}" ng-click="category = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits </a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;soup&quot;}" ng-click="category = &quot;soup&quot;"><a href="#">Soup Ingredients     </a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;xmas&quot;}" ng-click="category = &quot;xmas&quot;"><a href="#">Cooked Food Xmas Special   </a></li>
             </ul>
             <hr>
           </div>
@@ -194,7 +192,7 @@
               <div class="headline">
                 <label>Your basket contains: </label>
                 <ul class="list-group">
-                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><span class="pull-right">{{item.qty}} x {{item.unit_kg}} = £ {{format_money_a(item.qty, item.price)}}</span></li>
+                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><span class="pull-right">{{item.qty}} x £ {{item.price}} = £ {{format_money_a(item.qty, item.price)}}</span></li>
                 </ul>
                 <hr><strong class="pull-right">TOTAL: £ {{ total_basket() }}</strong>
                 <hr>
