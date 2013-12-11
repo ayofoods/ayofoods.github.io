@@ -175,18 +175,19 @@
         <div class="row section">
           <div class="col-lg-8">
             <ul class="nav nav-pills">
-              <li ng-class="{&quot;active&quot;: active == &quot;meat&quot;}" ng-click="active = &quot;meat&quot;"><a href="#">Fish and Meat Prices</a></li>
-              <li ng-class="{&quot;active&quot;: active == &quot;grain&quot;}" ng-click="active = &quot;grain&quot;"><a href="#">Flour &amp; Grain Prices</a></li>
-              <li ng-class="{&quot;active&quot;: active == &quot;drinks&quot;}" ng-click="active = &quot;drinks&quot;"><a href="#">Canned Drinks</a></li>
-              <li ng-class="{&quot;active&quot;: active == &quot;vegetables&quot;}" ng-click="active = &quot;vegetables&quot;"><a href="#">Vegetables</a></li>
-              <li ng-class="{&quot;active&quot;: active == &quot;cupboard&quot;}" ng-click="active = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits  </a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;meat&quot;}" ng-click="category = &quot;meat&quot;"><a href="#">Fish and Meat Prices</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;grain&quot;}" ng-click="category = &quot;grain&quot;"><a href="#">Flour &amp; Grain Prices</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;drinks&quot;}" ng-click="category = &quot;drinks&quot;"><a href="#">Canned Drinks</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;vegetables&quot;}" ng-click="category = &quot;vegetables&quot;"><a href="#">Vegetables</a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;cupboard&quot;}" ng-click="category = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits  </a></li>
+              <li ng-class="{&quot;active&quot;: category == &quot;xmas&quot;}" ng-click="category = &quot;xmas&quot;"><a href="#">Xmas   </a></li>
             </ul>
             <hr>
           </div>
         </div>
         <div class="row section">
           <div class="col-lg-8">
-            <table datatable="overrideOptions" aaSorting="aaSorting" ao-columns="tblColumns" aa-data="items" class="table table-bordered table-condensed table-striped table-hover"> </table>
+            <table datatable="overrideOptions" aaSorting="aaSorting" ao-columns="tblColumns" aa-data="items()" class="table table-bordered table-condensed table-striped table-hover"> </table>
           </div>
           <div class="row section">
             <div class="col-lg-4">
