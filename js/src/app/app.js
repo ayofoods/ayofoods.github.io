@@ -72,7 +72,7 @@ angular.module( 'cabmini', [
     $scope.basket.date = Date();
     order.set(angular.copy($scope.basket));   
     $scope.basket = {};
-
+    $('#place_order').modal('hide');
     $('#order_sent').modal('show');
   };
 
