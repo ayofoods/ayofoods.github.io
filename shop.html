@@ -197,7 +197,7 @@
               <div class="headline">
                 <label>Your basket contains: </label>
                 <ul class="list-group">
-                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><span class="pull-right">{{item.qty}} x £ {{money(100*item.price)}} = £ {{money(item.qty * (100 * item.price))}}</span></li>
+                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><a ng-click="incX(item.id)" class="btn btn-primary pull-right">                 <i class="fa fa-plus-circle"> </i></a><span class="pull-right">&nbsp;  </span><a ng-click="decX(item.id)" class="btn btn-primary pull-right"><i class="fa fa-minus-circle"> </i></a><span class="pull-right">&nbsp;  </span><span class="pull-right">{{item.qty}} x £ {{money(100*item.price)}} = £ {{money(item.qty * (100 * item.price))}}  </span></li>
                 </ul>
                 <hr>
               </div>
