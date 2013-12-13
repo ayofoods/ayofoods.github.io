@@ -1,228 +1,130 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="cabmini">
-  <head>
-    <!-- Meta Tags-->
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Welcome to IjeShop - the home of great Nigerian food</title>
-    <!-- End Meta Tags-->
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--><!--[if IE 7]>
-    <link rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
-    <!-- Google Font-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
-    <!-- End Google Font-->
-    <!-- Styesheets-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/bootstrap-select.css">
-    <link rel="stylesheet" type="text/css" href="vendor/DataTables/media/css/jquery.DataTables.css">
-    <link rel="stylesheet" type="text/css" href="css/ng-boilerplate-0.3.1.css">
-    <!-- End Stylesheets-->
-    <style>
-      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-        display: none;
-      }
-      
-    </style>
-  </head>
-  <body ng-controller="AppCtrl">
-    <div id="order_sent" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label" class="modal-title">Your order has been sent. Thank you.</h4>
-          </div>
-          <div class="modal-body">
-            We are always happy to answer any questions you may have.
-            Please write to us on Bla@contact.computer
-            or give us a call 0777777777
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label" class="modal-title">Login</h4>
-          </div>
-          <div class="modal-body">
-            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address {{email}}</label>
-              <input id="exampleInputEmail1" type="email" placeholder="Enter email" ng-model="email" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input id="exampleInputPassword1" type="password" placeholder="Password" ng-model="password" class="form-control">
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">Remember me on this computer
-              </label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button ng-click="login()" type="button" class="btn btn-primary">Submit     </button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div id="signup" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label" class="modal-title">Signup          </h4>
-          </div>
-          <div class="modal-body">
-            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address {{email}}</label>
-              <input id="exampleInputEmail1" type="email" placeholder="Enter email" ng-model="email" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input id="exampleInputPassword1" type="password" placeholder="Password" ng-model="password" class="form-control">
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">Remember me on this computer
-              </label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button ng-click="signup()" type="button" class="btn btn-primary">Submit     </button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div id="place_order" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" name="order_form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label2" class="modal-title">We are almost done. We just need some more info to deliver your purchase.          </h4>
-          </div>
-          <div class="modal-body">
-            <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div>
-            <div class="form-group">
-              <label for="delivery_address" class="control-label">Delivery address</label>
-              <input id="delivery_address" type="text" required ng-model="delivery_address" class="form-control"><span ng-show="order_form.delivery_address.$error.required" class="error">address is required!</span>
-            </div>
-            <div class="form-group">
-              <label for="delivery_postcode" class="control-label">Delivery postcode</label>
-              <input id="delivery_postcode" type="text" required ng-model="delivery_postcode" class="form-control"><span ng-show="order_form.delivery_postcode.$error.required" class="error">postcode is required!</span>
-            </div>
-            <div class="form-group">
-              <label for="telephone" ng-model="telephone" class="control-label">Telephone contact</label>
-              <input id="telephone" type="text" class="form-control">
-            </div>
-            <div class="form-group">
-              <select id="delivery_date" required ng-model="delivery_date" class="form-control">
-                <option>Choose delivery date</option>
-                <option value="12-12-2013">12-12-2013</option>
-                <option value="13-12-2013">13-12-2013</option>
-                <option value="14-12-2013">14-12-2013</option>
-                <option value="15-12-2013">15-12-2013</option>
-              </select><span ng-show="order_form.delivery_date.$error.required" class="error">delivery date is required!  </span>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button ng-click="place_order()" type="button" class="btn btn-primary">Place the order     </button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="top-part">
-      <!-- Start Header-->
-      <header id="header">
-        <!-- Start Navigation-->
-        <nav role="navigation" class="navbar navbar-inverse">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-              <!-- Start Logo / Text--><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;IjeShop</span></a>
-              <!-- End Logo / Text-->
-            </div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Inventory</a></li>
-                <li><a href="#about">About Us</a></li>
-              </ul>
-              <form role="search" class="navbar-form navbar-left">     
-                <button ng-hide="user" type="button" data-toggle="modal" data-target="#signup" class="btn btn-primary">SIGN UP  </button>
-                <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">LOGIN</button>
-                <button ng-show="user" type="button" ng-click="logout()" class="btn btn-primary">LOGOUT</button>
-              </form>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <div class="container ng-cloak">
-        <div class="row section">
-          <div class="col-lg-8">
-            <ul class="nav nav-pills">
-              <li ng-class="{&quot;active&quot;: category == &quot;meat&quot;}" ng-click="category = &quot;meat&quot;"><a href="#">Fish and Meat</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;grain&quot;}" ng-click="category = &quot;grain&quot;"><a href="#">Flour &amp; Grain </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;drinks&quot;}" ng-click="category = &quot;drinks&quot;"><a href="#">Drinks</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;vegetables&quot;}" ng-click="category = &quot;vegetables&quot;"><a href="#">Fruits &amp; Vegetables</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;cupboard&quot;}" ng-click="category = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;soup&quot;}" ng-click="category = &quot;soup&quot;"><a href="#">Soup Ingredients     </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;xmas&quot;}" ng-click="category = &quot;xmas&quot;"><a href="#">Cooked Food Xmas Special   </a></li>
-            </ul>
-            <hr>
-          </div>
-        </div>
-        <div class="row section">
-          <div class="col-lg-8">
-            <table datatable="overrideOptions" aaSorting="aaSorting" ao-columns="tblColumns" aa-data="items()" class="table table-bordered table-condensed table-striped table-hover"> </table>
-          </div>
-          <div class="row section">
-            <div class="col-lg-4">
-              <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
-              <button ng-show="user" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
-              <hr><strong class="pull-right">TOTAL: £ 6.50 (delivery) + £ {{ money(total_basket()) }} = £ {{ money(650+total_basket()) }}</strong>
-              <hr>
-              <div class="headline">
-                <label>Your basket contains: </label>
-                <ul class="list-group">
-                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><span class="pull-right">{{item.qty}} x £ {{money(100*item.price)}} = £ {{money(item.qty * (100 * item.price))}}</span></li>
-                </ul>
-                <hr>
-              </div>
-              <!--button.btn.btn-primary(ng-hide="user", type="button", data-toggle="modal", data-target="#login") Please login to make an order                -->
-              <!--button.btn.btn-success(ng-show="user", type="submit", data-toggle="modal", data-target="#place_order") Checkout-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- compiled JS-->
-    <script type="text/javascript" src="vendor/lodash/dist/lodash.js"></script>
-    <script type="text/javascript" src="vendor/jquery/jquery.js">   </script>
-    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js">   </script>
-    <script type="text/javascript" src="vendor/bootstrap-select/bootstrap-select.js">   </script>
-    <script type="text/javascript" src="vendor/angular/angular.js">   </script>
-    <script type="text/javascript" src="vendor/angular-route/angular-route.js"> </script>
-    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js">   </script>
-    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-simple-login-debug.js">   </script>
-    <script type="text/javascript" src="js/angularfire-0.3.0.js">   </script>
-    <!--script(type="text/javascript", src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.js") -->
-    <script type="text/javascript" src="vendor/angular-ui-utils/modules/mask/mask.js">   </script>
-    <script type="text/javascript" src="vendor/DataTables/media/js/jquery.DataTables.js">   </script>
-    <script type="text/javascript" src="js/datatables-bootstrap-paging.js"></script>
-    <script type="text/javascript" src="js/src/app/app.js">   </script>
-    <script type="text/javascript" src="js/src/app/directives/dataTable.js"> </script>
-    <!-- Google Analytics:-->
-  </body>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />  -->
+
+    <title>Welcome to IjeShop - The home of great Nigerian Food</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+	
+	<link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="landing/style/style.css"/>	
+
+    <script type="text/javascript" src="landing/js/jquery.js"></script>
+    <script type="text/javascript" src="landing/js/plugins.js"></script>
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="container">
+	
+	<!-- BEGIN MAIN PAGE -->
+	<div id="page-main" class="page active">
+		<div class="content-wrapper with-footer">
+			<!-- BEGIN CONTENT SECTION FOR MAIN PAGE -->
+			<section class="content">
+				<div class="entries">
+					<div id="main" class="entry">
+						<h1 id="logo" class="anim-go-left"><a href="/shop.html"><span>IjeShop</span></a></h1>				
+						<h2 class="anim-go-right">The Home of Great Nigerian Food</h2>	
+						<!-- <div id="countdown" class="anim-go-left"></div> -->
+						<h5 class="anim-go-right">Working hard,smart and fast to bring fresh afrocentric meat and fish cuts; flours; grains; pulses as well as your other "cupboard bits" to your door...</h5>
+						<!-- <form id="newsletter-form" class="the-form anim-go-left" action="subscribe.php">
+							<div class="field-wrapper">
+								<input type="text" class="textfield" name="email" placeholder="Email address" />
+								<button type="submit" class="btn">Subscribe</button>
+								<a class="btn btn-trigger" href="#page-contact">Contact</a>
+								<input type="hidden" name="submit" value="1" />
+							</div>
+							<div class="message"></div>
+						</form>	 -->
+						<a class="btn" href="/shop.html">Start Shopping >></a>
+					</div>
+				</div>
+				<div class="push"></div>
+			</section><!-- END CONTENT SECTION -->
+			
+			<!-- BEGIN FOOTER SECTION -->
+			<!--
+			<section class="footer">
+				<div class="footer-wrapper">
+					<div class="footer-item">
+						<ul class="social-links">
+							<li><a class="social anim-go-top facebook" href="#" target="_blank" title="Facebook"><span></span></a></li>
+							<li><a class="social anim-go-bottom twitter" href="#" target="_blank" title="Twitter"><span></span></a></li>
+							<li><a class="social anim-go-top dribbble" href="#" target="_blank" title="Dribbble"><span></span></a></li>
+							<li><a class="social anim-go-bottom pinterest" href="#" target="_blank" title="Pinterest"><span></span></a></li>
+							<li><a class="social anim-go-top youtube" href="#" target="_blank" title="YouTube"><span></span></a></li>
+							<li><a class="social anim-go-bottom vimeo" href="#" target="_blank" title="Vimeo"><span></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</section>-->
+			<!-- END FOOTER SECTION -->			
+		</div>
+	</div>
+	<!-- END MAIN PAGE -->
+	
+	<!-- BEGIN CONTACT PAGE -->
+	<div id="page-contact" class="page hidden deactive">
+		<div class="content-wrapper">			
+			<!-- BEGIN CONTENT SECTION FOR CONTACT PAGE -->
+			<section class="content">
+				<div class="entries">					
+					<div id="contact" class="entry">						
+						<a class="btn btn-trigger btn-close anim-go-left" href="#page-main">X</a>
+						<h2 class="anim-go-left">Contact Us</h2>
+						<br/>
+						<h5 class="anim-go-right">Feel free to send an enquiry, we will reply as soon as possible.</h5>
+						<form id="contact-form" class="the-form" action="contact.php">
+							<div class="field-wrapper">
+								<input type="text" class="textfield required anim-go-left" name="name" placeholder="Name" /><br/>
+								<input type="text" class="textfield required anim-go-right" name="email" placeholder="Email address" /><br/>
+								<textarea class="textarea required anim-go-left" name="message" placeholder="Message" row="5" ></textarea><br/>
+								<button type="submit" class="btn anim-go-right">Submit</button>
+								<input type="hidden" name="submit" value="1" />
+							</div>
+							<div class="message anim-go-left"></div>
+						</form>	
+					</div>
+				</div>
+			</section><!-- END CONTENT SECTION -->			
+		</div>
+	</div><!-- END CONTACT PAGE -->
+	
+	<!-- BEGIN SLIDER BACKGROUND -->
+	<div id="background">
+		<div class="slides-container">
+			<img src="landing/images/1.jpg" width="1366" height="779" alt="">
+			<img src="landing/images/2.jpg" width="1366" height="780" alt="">
+			<img src="landing/images/3.jpg" width="1366" height="857" alt="">
+			<img src="landing/images/4.jpg" width="1366" height="857" alt="">
+		</div>
+    </div><!-- END BACKGROUND -->
+	<script>
+
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+
+		  ga('create', 'UA-45203144-1', 'duststone.com');
+
+		  ga('send', 'pageview');
+
+
+
+		</script>
+</body>
 </html>

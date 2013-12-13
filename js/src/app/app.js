@@ -48,7 +48,11 @@ angular.module( 'cabmini', [
     $scope.category = _.first(_.keys($scope.categories));
 
     $scope.items = function(){
-      return $scope.categories[$scope.category];
+      if($scope.category === "all"){
+        return $scope.all_items;
+      }else{
+        return $scope.categories[$scope.category];
+      }
     };
 
     $scope.items_index = _.reduce($scope.all_items, function(acc, i){
