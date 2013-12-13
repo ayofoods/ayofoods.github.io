@@ -112,6 +112,12 @@ angular.module( 'cabmini', [
   });
 
 
+  $scope.minimal_order = function(){
+    return 75 <= _.reduce($scope.basket, function(acc, i){
+      return acc + (i.price * i.qty);
+    }, 0);
+  };
+
   $scope.logout = function() {
     angularFireAuth.logout();
   };
