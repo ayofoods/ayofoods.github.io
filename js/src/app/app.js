@@ -22,6 +22,11 @@ angular.module( 'cabmini', [
 
 .controller( 'AppCtrl', function AppCtrl ( $compile, $scope, $http, angularFire, angularFireAuth, angularFireCollection, $location) {
 
+  $( document ).on( "focus", "#table_filter input", function(){
+    $scope.category = "all";
+    $scope.$digest();
+  });
+
   $scope.basket = {};
 
   var money = function(amount){
@@ -48,6 +53,8 @@ angular.module( 'cabmini', [
     $scope.category = _.first(_.keys($scope.categories));
 
     $scope.items = function(){
+      var oTable = $('#table').dataTable();    
+      oTable.fnFilter('');
       if($scope.category === "all"){
         return $scope.all_items;
       }else{
@@ -274,7 +281,6 @@ jQuery('.tooltip').on('mouseover', function(){
   // }); 
   console.log("tooltip");
 });
-
 
 
 
