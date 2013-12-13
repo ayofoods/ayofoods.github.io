@@ -35,12 +35,67 @@
             <h4 id="login_label" class="modal-title">Your order has been sent. Thank you.</h4>
           </div>
           <div class="modal-body">
+            <ul>
+              <li>Your purchase will be delivered on {{delivery_date}}.</li>
+              <li>Please make your payment to: </li>
+              <li><strong>Halifax </strong></li>
+              <li><strong>Sort Code: 11-17-13</strong></li>
+              <li><strong>Account No: 00353085</strong></li>
+              <li>If you have any questions, plese write to us to </li>
+              <li><a href="mailto:IjeShop@gmail.com">IjeShop@gmail.com</a></li>
+              <li>or call/text us</li>
+              <li><a href="tel:07949536008">Ayo 07949536008 </a></li>
+              <li>or </li>
+              <li><a href="tel:07949536041">Yomi 07949536041</a></li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">OK</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="about_us" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <form role="form" class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+            <h4 class="modal-title">Your order has been sent. Thank you.</h4>
+          </div>
+          <div class="modal-body">
             We are always happy to answer any questions you may have.
             Please write to us on Bla@contact.computer
             or give us a call 0777777777
           </div>
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close        </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="payment" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <form role="form" class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+            <h4 class="modal-title">How to pay for your order</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>Please kindly make payment including Ijeshop and YOUR POST CODE as Reference to: </strong></li>
+              <li>Halifax Acc</li>
+              <li>Sort Code: 11-17-13</li>
+              <li>Account No: 00353085</li>
+              <li>&nbsp;</li>
+              <li><strong>We will then contact you shortly after your payment to set an Xmas delivery date which would be one out of Friday 20th Dec, Mon 23rd or Tuesday 24th Dec</strong></li>
+              <li>&nbsp;</li>
+              <li><strong>THANK YOU FROM IJESHOP!!!</strong></li>
+              <li>Tel/ Text/ Whats App/ B.B. : <a href="tel:07949536008">Ayo 07949536008 </a>or <a href="tel:07949536041">Yomi 07949536041</a></li>
+              <li>Email: <a href="mailto:IjeShop@gmail.com">IjeShop@gmail.com</a></li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close        </button>
           </div>
         </form>
       </div>
@@ -80,17 +135,21 @@
         <form role="form" class="modal-content">
           <div class="modal-header">
             <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label" class="modal-title">Signup          </h4>
+            <h4 class="modal-title">Signup          </h4>
           </div>
           <div class="modal-body">
-            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
+            <div ng-show="auth_error" class="alert alert-danger">{{signup_error}}</div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address {{email}}</label>
-              <input id="exampleInputEmail1" type="email" placeholder="Enter email" ng-model="email" class="form-control">
+              <label for="signup_email">Name</label>
+              <input id="signup_name" type="email" placeholder="Your name" ng-model="signup_email" class="form-control">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input id="exampleInputPassword1" type="password" placeholder="Password" ng-model="password" class="form-control">
+              <label for="signup_email">Email address</label>
+              <input id="signup_email" type="email" placeholder="Enter email" ng-model="signup_email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="signup_password">Password</label>
+              <input id="signup_password" type="password" placeholder="Password" ng-model="signup_password" class="form-control">
             </div>
             <div class="checkbox">
               <label>
@@ -113,7 +172,8 @@
             <h4 id="login_label2" class="modal-title">We are almost done. We just need some more info to deliver your purchase.          </h4>
           </div>
           <div class="modal-body">
-            <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div>
+            <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div><strong>Please pay total of £ {{ money(650+total_basket()) }} which consist of £ {{ money(total_basket()) }} for the goods and  £ 6.50  for delivery.  
+              <hr></strong>
             <div class="form-group">
               <label for="delivery_address" class="control-label">Delivery address</label>
               <input id="delivery_address" type="text" required ng-model="delivery_address" class="form-control"><span ng-show="order_form.delivery_address.$error.required" class="error">address is required!</span>
@@ -157,7 +217,7 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Inventory</a></li>
-                <li><a href="#about">About Us</a></li>
+                <li><a href="#" type="button" data-toggle="modal" data-target="#payment">How to order</a></li>
               </ul>
               <form role="search" class="navbar-form navbar-left">     
                 <button ng-hide="user" type="button" data-toggle="modal" data-target="#signup" class="btn btn-primary">SIGN UP  </button>
@@ -193,7 +253,6 @@
               <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
               <div ng-hide="minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="alert alert-danger">The minimal order is £75. Please Add more goods to your order.</div>
               <button ng-show="user &amp;&amp; minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
-              <hr><strong class="pull-right">TOTAL: £ 6.50 (delivery) + £ {{ money(total_basket()) }} = £ {{ money(650+total_basket()) }}</strong>
               <hr>
               <div class="headline">
                 <label>Your basket contains: </label>

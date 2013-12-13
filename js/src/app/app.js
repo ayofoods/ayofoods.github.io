@@ -50,7 +50,7 @@ angular.module( 'cabmini', [
       acc[i.category].push(i);
       return acc;
     }, {});
-    $scope.category = _.first(_.keys($scope.categories));
+    $scope.category = "all";
 
     $scope.items = function(){
       var oTable = $('#table').dataTable();    
