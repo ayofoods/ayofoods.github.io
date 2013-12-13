@@ -310,6 +310,7 @@ h1 {
     line-height: 1.1;
     margin: 10px 0 15px;
     text-shadow: 0 2px 2px #000;
+    display: inline-block;
 }
 
 h2 {
@@ -334,7 +335,7 @@ h4 {
 h5 {
     color: #fff;
     font-size: 20px;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 1.25em;
     text-shadow: 0 2px 2px #000;
     margin: 8px 0
@@ -403,7 +404,7 @@ a {
 
 h1#logo {
     line-height: 1;
-    width: 142px;
+    /*width: 142px;*/
     margin: 0 auto;
     padding: 15px 0
 }
@@ -1164,7 +1165,7 @@ button::-moz-focus-inner {
 }
 
 .btn {
-    font: 200 18px Lato, Arial, Helvetica, sans-serif, serif;
+    font: 200 30px Lato, Arial, Helvetica, sans-serif, serif;
     font-weight: 300;
     border: 3px solid #fff;
     background: none transparent;
