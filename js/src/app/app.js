@@ -52,9 +52,10 @@ angular.module( 'cabmini', [
     }, {});
     $scope.category = "all";
 
+    // oTable.fnFilter('');
+
     $scope.items = function(){
-      var oTable = $('#table').dataTable();    
-      oTable.fnFilter('');
+      var oTable = $('#table').dataTable();          
       if($scope.category === "all"){
         return $scope.all_items;
       }else{
@@ -89,8 +90,13 @@ angular.module( 'cabmini', [
     var ref = new Firebase("https://ayofoods.firebaseio.com/users/orders");
     ref = ref.child($scope.user.id).child('orders');
     var order = ref.push();
-    $scope.basket.date = Date();
-    order.set(angular.copy($scope.basket));   
+    var basket = angular.copy($scope.basket);
+    basket.date = Date();
+    basket.user = {email: angular.copy($scope.user.email)};
+    basket.delivery_address = angular.copy($scope.delivery_address);
+    basket.delivery_postcode = angular.copy($scope.delivery_postcode);
+    basket.name_on_order = angular.copy($scope.name_on_order);
+    order.set(basket);
     $scope.basket = {};
     $('#place_order').modal('hide');
     $('#order_sent').modal('show');
