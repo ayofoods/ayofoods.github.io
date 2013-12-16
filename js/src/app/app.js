@@ -216,17 +216,6 @@ angular.module( 'cabmini', [
 
     },
     {
-      sTitle: "Comment",
-      //mData: ".",
-      mData: function (source, type, val) {
-        return source;
-      },
-      mRender: function (item) {
-        return item.comment || '';
-      }
-
-    },
-    {
       sTitle: "In your basket",
       //mData: ".",
       mData: function (source, type, val) {
@@ -271,6 +260,48 @@ angular.module( 'cabmini', [
     fnCreatedRow: function (nRow, aData, iDataIndex) {
       //$(nRow).attr('ng-click', 'show("' + aData._id + '")');
       $compile(nRow)($scope);
+    },
+    fnRowCallbackX: function(nRow, b, c, d, e){
+      // var nCell = document.createElement( 'div' );
+      // nCell.innerHTML = b.desc;
+      // a.insertBefore( nCell );
+
+      $(nRow).html( '<b>A</b>' );
+      //$( a ).insertAfter(nCell);
+    },
+    fnDrawCallback: function ( oSettings ) {
+      if ( oSettings.aiDisplay.length === 0 )
+      {
+        return;
+      }
+      var nTrs = $('tbody tr', this);
+      var iColspan = nTrs[0].getElementsByTagName('td').length;
+      var j = 0;
+      for ( var i=oSettings._iDisplayStart ; i<oSettings._iDisplayEnd ; i++ )
+      {
+
+        var data = oSettings.aoData[ oSettings.aiDisplay[i] ]._aData;        
+          if(data.comment && data.comment.trim() !== ""){
+          var nGroup = document.createElement( 'tr' );
+          nGroup.className = "comment "+($(nTrs[j]).hasClass('odd') ? 'odd' : 'even');
+          var nCell = document.createElement( 'td' );
+          nCell.colSpan = iColspan;
+          nCell.className = "comment";
+          nCell.innerHTML = data.comment;
+          nGroup.appendChild( nCell );
+
+          // var parent = nTrs[j].parentNode;
+          // if(parent.lastchild == nTrs[j]) {
+          //   //add the newElement after the target element.
+          //   parent.appendChild(nGroup);
+          // } else {
+          //   // else the target has siblings, insert the new element between the target and it's next sibling.
+          //   parent.insertBefore(nGroup, nTrs[j].nextSibling);
+          // } 
+          $(nTrs[j]).after(nGroup);
+        }
+        j++;
+      }
     }
   };
   
