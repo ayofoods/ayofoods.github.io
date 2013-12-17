@@ -40,9 +40,11 @@ angular.module( 'cabmini', [
 
   angularFireCollection(new Firebase("https://ayofoods.firebaseio.com/inventory"), function(data){
     //$scope.all_items = _.filter(data.val(), function(i){ return i.price; });
-    $scope.all_items = _.map(data.val(), function(i){
+    $scope.all_items = _.filter(_.map(data.val(), function(i){
       i.price = parseInt((i.price || 0), 10);
       return i;
+    }), function(i){
+      return i.price > 0;
     });
 
     $scope.categories = _.reduce($scope.all_items, function(acc, i){
