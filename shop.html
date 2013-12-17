@@ -36,7 +36,6 @@
           </div>
           <div class="modal-body">
             <ul>
-              <li>Your purchase will be delivered on {{delivery_date}}.</li>
               <li>Please make your payment to: </li>
               <li><strong>Halifax </strong></li>
               <li><strong>Sort Code: 11-17-13</strong></li>
@@ -172,7 +171,7 @@
             <h4 id="login_label2" class="modal-title">We are almost done. We just need some more info to deliver your purchase.          </h4>
           </div>
           <div class="modal-body">
-            <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div><strong>Please pay total of £ {{ money(650+total_basket()) }} which consist of £ {{ money(total_basket()) }} for the goods and  £ 6.50  for delivery.  
+            <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div><strong>Please pay total of £ {{ money(699+total_basket()) }} which consist of £ {{ money(total_basket()) }} for the goods and  £ 6.99  for delivery.  
               <hr></strong>
             <div class="form-group">
               <label for="name_on_order" class="control-label">Name</label>
@@ -246,7 +245,7 @@
           <div class="row section">
             <div class="col-lg-4">
               <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
-              <div ng-hide="minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="alert alert-danger">The minimal order is £75. Please Add more goods to your order.</div>
+              <div ng-hide="minimal_order()" class="alert alert-danger">Your order is currently £ {{ money(699+total_basket()) }}.The minimal order is £75. Please Add more goods to your order.</div>
               <button ng-show="user &amp;&amp; minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
               <hr>
               <div class="headline">
