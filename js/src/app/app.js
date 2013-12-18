@@ -132,14 +132,15 @@ angular.module( 'cabmini', [
 
   $scope.signup = function() {
     var name = $scope.signup_name;
-    angularFireAuth.createUser($scope.signup_email, $scope.signup_password, function(error, user) {
-      if (!error) {
-        console.log('User Id: ' + user.id + ', Email: ' + user.email);
-        var ref = new Firebase("https://ijeshop.firebaseio.com/users");
-        var name = ref.child($scope.user.id).child('name');
-        name.set($scope.signup_name);
-      }
-    });
+    angularFireAuth.createUser($scope.signup_email, $scope.signup_password);
+    // angularFireAuth.createUser($scope.signup_email, $scope.signup_password, function(error, user) {
+    //   if (!error) {
+    //     console.log('User Id: ' + user.id + ', Email: ' + user.email);
+    //     var ref = new Firebase("https://ijeshop.firebaseio.com/users");
+    //     var name = ref.child($scope.user.id).child('name');
+    //     name.set($scope.signup_name);
+    //   }
+    // });
   };
 
   $scope.total_basket = function(){
