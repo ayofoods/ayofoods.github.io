@@ -121,7 +121,7 @@ angular.module( 'cabmini', [
 
 
   $scope.minimal_order = function(){
-    return 50 <= _.reduce($scope.basket, function(acc, i){
+    return 49.99 <= _.reduce($scope.basket, function(acc, i){
       return acc + (i.price * i.qty);
     }, 0);
   };

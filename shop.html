@@ -245,7 +245,7 @@
           <div class="row section">
             <div class="col-lg-4">
               <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
-              <div ng-hide="minimal_order()" class="alert alert-danger">Your order is currently £ {{ money(total_basket()) }}.The minimal order is £50. Please Add more goods to your order.</div>
+              <div ng-hide="minimal_order()" class="alert alert-danger">Your order is currently £ {{ money(total_basket()) }}.The minimal order is £49.99. Please Add more goods to your order.</div>
               <button ng-show="user &amp;&amp; minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
               <hr>
               <div class="headline">
