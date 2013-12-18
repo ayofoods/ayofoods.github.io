@@ -52,7 +52,7 @@ angular.module( 'cabmini', [
       acc[i.category].push(i);
       return acc;
     }, {});
-    $scope.category = "all";
+    $scope.category = "meat";
 
     // oTable.fnFilter('');
 
