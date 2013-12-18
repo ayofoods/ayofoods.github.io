@@ -30,7 +30,7 @@ angular.module( 'cabmini', [
   $scope.basket = {};
 
   var money = function(amount){
-    return (""+amount).replace(/(.*)(.{2})/g, "$1.$2");
+    return (""+amount).replace(/^([0-9]*)([0-9][0-9]).*$/g, "$1.$2");
   };
 
   $scope.money = money;
