@@ -35,10 +35,10 @@ angular.module( 'cabmini', [
 
   $scope.money = money;
 
-  var ref = new Firebase("https://ayofoods.firebaseio.com/");
+  var ref = new Firebase("https://ijeshop.firebaseio.com/");
   angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
 
-  angularFireCollection(new Firebase("https://ayofoods.firebaseio.com/inventory"), function(data){
+  angularFireCollection(new Firebase("https://ijeshop.firebaseio.com/inventory"), function(data){
     //$scope.all_items = _.filter(data.val(), function(i){ return i.price; });
     $scope.all_items = _.filter(_.map(data.val(), function(i){
       i.price = parseFloat((i.price || 0), 10);
@@ -89,7 +89,7 @@ angular.module( 'cabmini', [
   $scope.active = "meat";
 
   $scope.place_order = function() {
-    var ref = new Firebase("https://ayofoods.firebaseio.com/users/orders");
+    var ref = new Firebase("https://ijeshop.firebaseio.com/users/orders");
     ref = ref.child($scope.user.id).child('orders');
     var order = ref.push();
     var basket = angular.copy($scope.basket);
@@ -131,7 +131,8 @@ angular.module( 'cabmini', [
   };
 
   $scope.signup = function() {
-    angularFireAuth.createUser($scope.email, $scope.password);
+    var name = $scope.signup_name;
+    angularFireAuth.createUser($scope.signup_email, $scope.signup_password);
   };
 
   $scope.total_basket = function(){
