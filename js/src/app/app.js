@@ -183,7 +183,7 @@ angular.module( 'cabmini', [
         return source;
       },
       mRender: function (item) {
-        return '<img src="'+item.flickr+'" height="50">';
+        return '<img src="'+item.flickr+'" width="120">';
       }
     },
     {
