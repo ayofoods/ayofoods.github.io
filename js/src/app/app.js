@@ -93,8 +93,8 @@ angular.module( 'cabmini', [
     ref = ref.child($scope.user.id).child('orders');
     var order = ref.push();
     var basket = angular.copy($scope.basket);
-    basket.date = Firebase.ServerValue.TIMESTAMP;
-    basket.user = {email: angular.copy($scope.user.email)};
+    basket.date = Firebase.ServerValue.TIMESTAMP;    
+    basket.user = {email: angular.copy($scope.user.email), telephone: angular.copy($scope.telephone)};
     basket.delivery_address = angular.copy($scope.delivery_address);
     basket.delivery_postcode = angular.copy($scope.delivery_postcode);
     basket.name_on_order = angular.copy($scope.name_on_order);
