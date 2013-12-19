@@ -123,8 +123,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button ng-click="login()" type="button" class="btn btn-primary">Submit     </button>
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close </button>
+            <input type="submit" class="btn btn-primary">
           </div>
         </form>
       </div>
@@ -153,15 +153,15 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button ng-click="signup()" type="button" class="btn btn-primary">Submit     </button>
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close </button>
+            <input type="submit" class="btn btn-primary">
           </div>
         </form>
       </div>
     </div>
     <div id="place_order" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
       <div class="modal-dialog">
-        <form role="form" name="order_form" class="modal-content">
+        <form role="form" name="order_form" ng-submit="place_order()" class="modal-content">
           <div class="modal-header">
             <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
             <h4 id="login_label2" class="modal-title">We are almost done. We just need some more info to deliver your purchase.          </h4>
@@ -188,7 +188,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button ng-click="place_order()" type="button" class="btn btn-primary">Place the order     </button>
+            <input type="submit" class="btn btn-primary">
           </div>
         </form>
       </div>
