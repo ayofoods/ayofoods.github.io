@@ -90,15 +90,15 @@ angular.module( 'cabmini', [
 
   $scope.place_order = function() {
     var ref = new Firebase("https://ijeshop.firebaseio.com/users");
-    ref = ref.child($scope.user.id).child('orders');
-    var order = ref.push();
-    var basket = angular.copy($scope.basket);
-    basket.date = Firebase.ServerValue.TIMESTAMP;
-    basket.user = {email: angular.copy($scope.user.email)};
-    basket.delivery_address = angular.copy($scope.delivery_address);
-    basket.delivery_postcode = angular.copy($scope.delivery_postcode);
-    basket.name_on_order = angular.copy($scope.name_on_order);
-    order.set(basket);
+    var user = ref.child($scope.user.id);
+    var orders = user.child('orders');
+    var order = orders.push();
+    var items = order.child('items');
+    var meta = order.child('meta');
+    
+    items.set(angular.copy($scope.basket));
+    meta.set({name_on_order: angular.copy($scope.name_on_order) || '', delivery_postcode: angular.copy($scope.delivery_postcode) || '', delivery_address: angular.copy($scope.delivery_address) || '', date: Firebase.ServerValue.TIMESTAMP, email: angular.copy($scope.user.email) || '', telephone: angular.copy($scope.telephone) || ''});
+
     $scope.basket = {};
     $('#place_order').modal('hide');
     $('#order_sent').modal('show');
