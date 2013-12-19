@@ -7473,3 +7473,6 @@ div.DTFC_LeftFootWrapper table {
 td.comment {
   padding-bottom: 3em !important;
 }
+li.disabled {
+  display: none;
+}
