@@ -99,67 +99,7 @@
         </form>
       </div>
     </div>
-    <div id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" ng-submit="login()" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label" class="modal-title">Login</h4>
-          </div>
-          <div class="modal-body">
-            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" placeholder="Enter email" ng-model="email" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" placeholder="Password" ng-model="password" class="form-control">
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">Remember me on this computer
-              </label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close </button>
-            <input type="submit" class="btn btn-primary">
-          </div>
-        </form>
-      </div>
-    </div>
-    <div id="signup" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" ng-submit="signup()" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 class="modal-title">Signup          </h4>
-          </div>
-          <div class="modal-body">
-            <div ng-show="auth_error" class="alert alert-danger">{{auth_error}}</div>
-            <div class="form-group">
-              <label for="signup_email">Email address</label>
-              <input type="email" placeholder="Enter email" ng-model="signup_email" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="signup_password">Password</label>
-              <input type="password" placeholder="Password" ng-model="signup_password" class="form-control">
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">Remember me on this computer
-              </label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close </button>
-            <input type="submit" class="btn btn-primary">
-          </div>
-        </form>
-      </div>
-    </div>
-    <div id="place_order" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
+    <div id="place_order" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
       <div class="modal-dialog">
         <form role="form" name="order_form" ng-submit="place_order()" class="modal-content">
           <div class="modal-header">
@@ -170,8 +110,12 @@
             <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div><strong>Please pay total of £ {{ money(699+total_basket()) }} which consist of £ {{ money(total_basket()) }} for the goods and  £ 6.99  for delivery.  
               <hr></strong>
             <div class="form-group">
-              <label for="name_on_order" class="control-label">Name</label>
-              <input id="name_on_order" type="text" required ng-model="name_on_order" class="form-control"><span ng-show="order_form.name_on_order.$error.required" class="error">Your name is required!    </span>
+              <label for="delivery_name" class="control-label">Name</label>
+              <input id="delivery_name" type="text" required ng-model="delivery_name" class="form-control"><span ng-show="order_form.delivery_name.$error.required" class="error">Your name is required!    </span>
+            </div>
+            <div class="form-group">
+              <label for="delivery_email" class="control-label">Email</label>
+              <input id="delivery_email" type="email" required ng-model="delivery_email" class="form-control"><span ng-show="order_form.delivery_email.$error.required" class="error">Your email is required!  </span>
             </div>
             <div class="form-group">
               <label for="delivery_address" class="control-label">Delivery address</label>
@@ -182,8 +126,8 @@
               <input id="delivery_postcode" type="text" required ng-model="delivery_postcode" class="form-control"><span ng-show="order_form.delivery_postcode.$error.required" class="error">postcode is required!</span>
             </div>
             <div class="form-group">
-              <label for="telephone" ng-model="telephone" class="control-label">Telephone contact</label>
-              <input id="telephone" type="text" class="form-control">
+              <label for="delivery_telephone" class="control-label">Telephone contact</label>
+              <input id="delivery_telephone" type="text" required ng-model="delivery_telephone" class="form-control"><span ng-show="order_form.delivery_telephone.$error.required" class="error">Telephone contact is required!  </span>
             </div>
           </div>
           <div class="modal-footer">
@@ -206,14 +150,8 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Inventory</a></li>
                 <li><a href="#" type="button" data-toggle="modal" data-target="#payment">How to order</a></li>
               </ul>
-              <form role="search" class="navbar-form navbar-left">     
-                <button ng-hide="user" type="button" data-toggle="modal" data-target="#signup" class="btn btn-primary">SIGN UP  </button>
-                <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">LOGIN</button>
-                <button ng-show="user" type="button" ng-click="logout()" class="btn btn-primary">LOGOUT</button>
-              </form>
             </div>
           </div>
         </nav>
@@ -240,9 +178,8 @@
           </div>
           <div class="row section">
             <div class="col-lg-4">
-              <button ng-hide="user" type="button" data-toggle="modal" data-target="#login" class="btn btn-primary">Please login to make an order                </button>
               <div ng-hide="minimal_order()" class="alert alert-danger">Your order is currently £ {{ money(total_basket()) }}.The minimal order is £49.99. Please Add more goods to your order.</div>
-              <button ng-show="user &amp;&amp; minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
+              <button ng-show="minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
               <hr>
               <div class="headline">
                 <label>Your basket contains: </label>

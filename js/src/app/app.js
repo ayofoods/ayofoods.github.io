@@ -36,7 +36,16 @@ angular.module( 'cabmini', [
   $scope.money = money;
 
   var ref = new Firebase("https://ijeshop.firebaseio.com/");
-  angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
+  var auth = new FirebaseSimpleLogin(ref, function(error, user) {
+    if(!error){
+      $scope.$apply(function(){
+        $scope.user = user;
+      });
+    }
+  });
+
+  //angularFireAuth.initialize(ref, {scope: $scope, name: "user"});
+  auth.login('anonymous');
 
   angularFireCollection(new Firebase("https://ijeshop.firebaseio.com/inventory"), function(data){
     //$scope.all_items = _.filter(data.val(), function(i){ return i.price; });
@@ -76,16 +85,6 @@ angular.module( 'cabmini', [
   //   $scope.items = _.values(data.inventory);
   // });
 
-
-
-  $scope.login = function() {
-    angularFireAuth.login('password', {
-      email: $scope.email,
-      password: $scope.password,
-      rememberMe: true
-    });    
-  };
-
   $scope.active = "meat";
 
   $scope.place_order = function() {
@@ -97,7 +96,7 @@ angular.module( 'cabmini', [
     var meta = order.child('meta');
     
     items.set(angular.copy($scope.basket));
-    meta.set({name_on_order: angular.copy($scope.name_on_order) || '', delivery_postcode: angular.copy($scope.delivery_postcode) || '', delivery_address: angular.copy($scope.delivery_address) || '', date: Firebase.ServerValue.TIMESTAMP, email: angular.copy($scope.user.email) || '', telephone: angular.copy($scope.telephone) || ''});
+    meta.set({delivery_name: angular.copy($scope.delivery_name) || '', delivery_postcode: angular.copy($scope.delivery_postcode) || '', delivery_address: angular.copy($scope.delivery_address) || '', date: Firebase.ServerValue.TIMESTAMP, delivery_email: angular.copy($scope.delivery_email) || '', delivery_telephone: angular.copy($scope.delivery_telephone) || ''});
 
     $scope.basket = {};
     $('#place_order').modal('hide');
@@ -107,7 +106,7 @@ angular.module( 'cabmini', [
   $scope.$on("angularFireAuth:login", function(evt, user) {
     $scope.user = user;
     $scope.auth_error = null;
-    $('#login, #signup').modal('hide');
+    // $('#login, #signup').modal('hide');
     console.log('User logged in.');
   });
   $scope.$on("angularFireAuth:logout", function(evt) {
