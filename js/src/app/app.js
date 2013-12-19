@@ -96,9 +96,11 @@ angular.module( 'cabmini', [
     var meta = order.child('meta');
     
     items.set(angular.copy($scope.basket));
-    meta.set({delivery_name: angular.copy($scope.delivery_name) || '', delivery_postcode: angular.copy($scope.delivery_postcode) || '', delivery_address: angular.copy($scope.delivery_address) || '', date: Firebase.ServerValue.TIMESTAMP, delivery_email: angular.copy($scope.delivery_email) || '', delivery_telephone: angular.copy($scope.delivery_telephone) || ''});
+    meta.set({total: $scope.total_basket()/100, delivery_name: angular.copy($scope.delivery_name) || '', delivery_postcode: angular.copy($scope.delivery_postcode) || '', delivery_address: angular.copy($scope.delivery_address) || '', date: Firebase.ServerValue.TIMESTAMP, delivery_email: angular.copy($scope.delivery_email) || '', delivery_telephone: angular.copy($scope.delivery_telephone) || ''});
+    $scope.to_pay = 699+$scope.total_basket();
 
     $scope.basket = {};
+
     $('#place_order').modal('hide');
     $('#order_sent').modal('show');
   };
