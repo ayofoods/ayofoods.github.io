@@ -101,6 +101,8 @@ angular.module( 'cabmini', [
 
     $scope.basket = {};
 
+    $http.jsonp("https://script.google.com/macros/s/AKfycbx0w0dw47Cx3zcSGLoLmXW4eCPL-oXSv3EVHT3kuECIbtLHsdiX/exec?userid="+$scope.user.id+"&orderid="+order.name());
+
     $('#place_order').modal('hide');
     $('#order_sent').modal('show');
   };
