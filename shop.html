@@ -1,234 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="cabmini">
+<html lang="en">
   <head>
     <!-- Meta Tags-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Welcome to IjeShop - the home of great Nigerian food</title>
+    <title>Welcome to IjeSHop - the home of great Nigerian and African food</title>
     <!-- End Meta Tags-->
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--><!--[if IE 7]>
-    <link rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
-    <!-- Google Font-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
-    <!-- End Google Font-->
-    <!-- Styesheets-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/bootstrap-select.css">
-    <link rel="stylesheet" type="text/css" href="vendor/DataTables/media/css/jquery.DataTables.css">
-    <link rel="stylesheet" type="text/css" href="css/ng-boilerplate-0.3.1.css">
-    <!-- End Stylesheets-->
-    <style>
-      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-        display: none;
-      }
-      
-    </style>
   </head>
-  <body ng-controller="AppCtrl">
-    <div id="order_sent" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label" class="modal-title">Your order has been sent. Thank you.</h4>
-          </div>
-          <div class="modal-body">
-            <ul>
-              <li>We will contact you about delivery date which is either next Saturday or Sunday.</li>
-              <li>&nbsp;</li>
-              <li>Please pay &nbsp;<strong> £ {{ money(to_pay) }}</strong>&nbsp; to: </li>
-              <li><strong>BARCLAYS </strong></li>
-              <li>Name: Ije Shop Limited</li>
-              <li><strong>Sort Code: 20-80-57</strong></li>
-              <li><strong>Account No: 00778648</strong></li>
-              <li>If you have any questions, plese write to us to </li>
-              <li><a href="mailto:foodstuff@ijeshop.com">foodstuff@ijeshop.com</a></li>
-              <li>or call/text us</li>
-              <li><a href="tel:07949536008">Ayo 07949536008 </a></li>
-              <li>or </li>
-              <li><a href="tel:07949536041">Yomi 07949536041</a></li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">OK</button>
-          </div>
-        </form>
-      </div>
+  <body>
+
+    <div>
+      <script type="text/javascript" src="http://app.ecwid.com/script.js?5229089" charset="utf-8"></script>
+      <!-- remove layout parameter if you want to position minicart yourself -->
+      <script type="text/javascript"> xMinicart("layout=attachToCategories"); </script>
     </div>
-    <div id="about_us" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 class="modal-title">Your order has been sent. Thank you.</h4>
-          </div>
-          <div class="modal-body">
-            We are always happy to answer any questions you may have.
-            Please write to us on Bla@contact.computer
-            or give us a call 0777777777
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close        </button>
-          </div>
-        </form>
-      </div>
+
+    <div>
+      <script type="text/javascript" src="http://app.ecwid.com/script.js?5229089" charset="utf-8"></script>
+      <script type="text/javascript"> xCategories(); </script>
     </div>
-    <div id="payment" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 class="modal-title">How to pay for your order</h4>
-          </div>
-          <div class="modal-body">
-            <ul>
-              <li><strong>Please kindly make payment including YOUR POST CODE as Reference to: </strong></li>
-              <li>Barclays</li>
-              <li>Name: Ije Shop Limited</li>
-              <li>Sort Code: 20-80-57</li>
-              <li>Account No: 00778648</li>
-              <li>&nbsp;</li>
-              <li><strong>We will then contact you shortly after your payment to set delivery date which would be next Saturday or Sunday</strong></li>
-              <li>&nbsp;</li>
-              <li><strong>THANK YOU FROM IJESHOP!!!</strong></li>
-              <li>Tel/ Text/ Whats App/ B.B. : <a href="tel:07949536008">Ayo 07949536008 </a>or <a href="tel:07949536041">Yomi 07949536041</a></li>
-              <li>Email: <a href="mailto:foodstuff@ijeshop.com">foodstuff@ijeshop.com</a></li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close        </button>
-          </div>
-        </form>
-      </div>
+
+    <div id="my-store-5229089"></div><div>
+      <script type="text/javascript" src="http://app.ecwid.com/script.js?5229089" charset="utf-8"></script><script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(3,3) list(10) table(20)","categoryView=grid","searchView=list","id=my-store-5229089");</script>
     </div>
-    <div id="place_order" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
-      <div class="modal-dialog">
-        <form role="form" name="order_form" ng-submit="place_order()" class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-            <h4 id="login_label2" class="modal-title">We are almost done. We just need some more info to deliver your purchase.          </h4>
-          </div>
-          <div class="modal-body">
-            <div ng-show="order_error" class="alert alert-danger">{{auth_error}}</div><strong>Please pay total of £ {{ money(699+total_basket()) }} which consist of £ {{ money(total_basket()) }} for the goods and  £ 6.99  for delivery.  
-              <hr></strong>
-            <div class="form-group">
-              <label for="delivery_name" class="control-label">Name</label>
-              <input id="delivery_name" type="text" required ng-model="delivery_name" class="form-control"><span ng-show="order_form.delivery_name.$error.required" class="error">Your name is required!    </span>
-            </div>
-            <div class="form-group">
-              <label for="delivery_email" class="control-label">Email</label>
-              <input id="delivery_email" type="email" required ng-model="delivery_email" class="form-control"><span ng-show="order_form.delivery_email.$error.required" class="error">Your email is required!  </span>
-            </div>
-            <div class="form-group">
-              <label for="delivery_address" class="control-label">Delivery address</label>
-              <input id="delivery_address" type="text" required ng-model="delivery_address" class="form-control"><span ng-show="order_form.delivery_address.$error.required" class="error">address is required!</span>
-            </div>
-            <div class="form-group">
-              <label for="delivery_postcode" class="control-label">Delivery postcode</label>
-              <input id="delivery_postcode" type="text" required ng-model="delivery_postcode" class="form-control"><span ng-show="order_form.delivery_postcode.$error.required" class="error">postcode is required!</span>
-            </div>
-            <div class="form-group">
-              <label for="delivery_telephone" class="control-label">Telephone contact</label>
-              <input id="delivery_telephone" type="text" required ng-model="delivery_telephone" class="form-control"><span ng-show="order_form.delivery_telephone.$error.required" class="error">Telephone contact is required!  </span>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <input type="submit" class="btn btn-primary">
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="top-part">
-      <!-- Start Header-->
-      <header id="header">
-        <!-- Start Navigation-->
-        <nav role="navigation" class="navbar navbar-inverse">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-              <!-- Start Logo / Text--><a href="#" class="navbar-brand text-logo"><i class="icon-rocket"></i><span>&nbsp;IjeShop</span></a>
-              <!-- End Logo / Text-->
-            </div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li><a href="#" type="button" data-toggle="modal" data-target="#payment">How to order</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <div class="container ng-cloak">
-        <div class="row section">
-          <div class="col-lg-8">
-            <ul class="nav nav-pills">
-              <li ng-class="{&quot;active&quot;: category == &quot;all&quot;}" ng-click="category = &quot;all&quot;"><a href="#">All</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;meat&quot;}" ng-click="category = &quot;meat&quot;"><a href="#">Fish and Meat</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;grain&quot;}" ng-click="category = &quot;grain&quot;"><a href="#">Flour &amp; Grain </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;drinks&quot;}" ng-click="category = &quot;drinks&quot;"><a href="#">Drinks</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;vegetables&quot;}" ng-click="category = &quot;vegetables&quot;"><a href="#">Fruits &amp; Vegetables</a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;cupboard&quot;}" ng-click="category = &quot;cupboard&quot;"><a href="#">Dry Cupboard bits </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;soup&quot;}" ng-click="category = &quot;soup&quot;"><a href="#">Soup Ingredients     </a></li>
-              <li ng-class="{&quot;active&quot;: category == &quot;xmas&quot;}" ng-click="category = &quot;xmas&quot;"><a href="#">Cooked Food Special   </a></li>
-            </ul>
-            <hr>
-          </div>
-        </div>
-        <div class="row section">
-          <div class="col-lg-8">
-            <table id="table" datatable="overrideOptions" aaSorting="aaSorting" ao-columns="tblColumns" aa-data="items()" class="table table-bordered table-condensed table-striped table-hover"> </table>
-          </div>
-          <div class="row section">
-            <div class="col-lg-4">
-              <div ng-hide="minimal_order()" class="alert alert-danger">Your order is currently £ {{ money(total_basket()) }}.The minimal order is £49.99. Please Add more goods to your order.</div>
-              <button ng-show="minimal_order()" type="submit" data-toggle="modal" data-target="#place_order" class="btn btn-success">Checkout</button>
-              <hr>
-              <div class="headline">
-                <label>Your basket contains: </label>
-                <ul class="list-group">
-                  <li ng-repeat="(id, item) in basket | filter:search" class="clearfix list-group-item"> <span>{{item.desc}}</span><a ng-click="incX(item.id)" class="btn btn-primary pull-right">                 <i class="fa fa-plus-circle"> </i></a><span class="pull-right">&nbsp;  </span><a ng-click="decX(item.id)" class="btn btn-primary pull-right"><i class="fa fa-minus-circle"> </i></a><span class="pull-right">&nbsp;  </span><span class="pull-right">{{item.qty}} x £ {{money(100*item.price)}} = £ {{money(item.qty * (100 * item.price))}}  </span></li>
-                </ul>
-                <hr>
-              </div>
-              <!--button.btn.btn-primary(ng-hide="user", type="button", data-toggle="modal", data-target="#login") Please login to make an order                -->
-              <!--button.btn.btn-success(ng-show="user", type="submit", data-toggle="modal", data-target="#place_order") Checkout-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- compiled JS-->
-    <script type="text/javascript" src="vendor/lodash/dist/lodash.js"></script>
-    <script type="text/javascript" src="vendor/jquery/jquery.js">   </script>
-    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js">   </script>
-    <script type="text/javascript" src="vendor/bootstrap-select/bootstrap-select.js">   </script>
-    <script type="text/javascript" src="vendor/angular/angular.js">   </script>
-    <script type="text/javascript" src="vendor/angular-route/angular-route.js"> </script>
-    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js">   </script>
-    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-simple-login-debug.js">   </script>
-    <script type="text/javascript" src="js/angularfire-0.3.0.js">   </script>
-    <!--script(type="text/javascript", src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.js") -->
-    <script type="text/javascript" src="vendor/angular-ui-utils/modules/mask/mask.js">   </script>
-    <script type="text/javascript" src="vendor/DataTables/media/js/jquery.DataTables.js">   </script>
-    <script type="text/javascript" src="js/datatables-bootstrap-paging.js"></script>
-    <script type="text/javascript" src="js/src/app/app.js">   </script>
-    <script type="text/javascript" src="js/src/app/directives/dataTable.js"> </script>
-    <!-- Google Analytics:-->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-3749569-9', 'ijeshop.com');
-      ga('send', 'pageview');
-      
-    </script>
-    <script type="text/javascript" src="http://js.exceptional.io/exceptional.js"></script>
-    <script type="text/javascript">
-      Exceptional.setKey('5110dd4c8ca4aaed3a8f20e9e499ac2945955243');
-      
-    </script>
+
+    
   </body>
 </html>
