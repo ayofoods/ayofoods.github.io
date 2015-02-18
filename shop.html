@@ -1,22 +1,29 @@
 <!doctype html>
 <html>
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>
-        $('iframe').height( $('iframe').contents('body').outerHeight());
-    </script>
-
-    <style type="text/css">
-        body {
-            height: auto;
-            overflow: auto
-        }
-    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.iframe-auto-height.plugin.js"></script>
 </head>
 
 <body>
 
-<iframe name="ijeshop" src="http://ijeshop.ecwid.com/" frameborder="0" scrolling="no" id="iframe"/>
+<iframe src="http://ijeshop.ecwid.com/" class="ijeshop" scrolling="no" frameborder="0"></iframe>
+
+<script>
+  $('iframe.ijeshop').iframeAutoHeight({
+    heightOffset: 0,
+    minHeight: 0,
+    maxHeight: 0,
+    callback: function (newHeight) {},
+    animate: false,
+    debug: false,
+    diagnostics: false, // used for development only
+    resetToMinHeight: false,
+    triggerFunctions: [],
+    heightCalculationOverrides: []
+    heightOffset: 0 // Optionally add some buffer to the bottom
+  });
+</script>
 
 
 <script>
