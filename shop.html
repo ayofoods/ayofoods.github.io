@@ -1,9 +1,23 @@
 <!doctype html>
 <html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $('iframe').height( $('iframe').contents('body').outerHeight());
+    </script>
+
+    <style type="text/css">
+        body {
+            height: auto;
+            overflow: auto
+        }
+    </style>
+</head>
+
 <body>
 
-<iframe src="http://ijeshop.ecwid.com/">
-</iframe>
+<iframe name="ijeshop" src="http://ijeshop.ecwid.com/" frameborder="0" scrolling="no" id="iframe"/>
+
 
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
